@@ -1,0 +1,34 @@
+@use '../../sass/breakpoints' as bp
+
+.searchBox
+    position: relative
+    width: 300px
+    height: 30px
+    
+    @media ( max-width: bp.$laptop-bp )
+        width: 200px
+
+    @media ( max-width: bp.$mobile-bp )
+        height: 25px
+        width: 50%
+
+    &__input
+        position: absolute
+        left: 0
+        top: 0
+        padding: 3px 10px
+        width: 100%
+        height: 100%
+        outline: none
+        border: none
+        border-radius: 5px
+        background-color: whitesmoke 
+        box-shadow: 5px 5px 5px -5px black
+            
+
+    &__ico
+        position: absolute
+        right: 5%
+        top: 50%
+        transform: translateY(-50%)
+        color: black

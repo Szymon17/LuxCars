@@ -1,0 +1,23 @@
+@use '../../sass/varibles' as vars
+
+
+.home
+    height: vars.$body-height
+    overflow: auto
+    
+
+    &__title
+        margin-top: 5vh
+        text-align: center
+        font-family: 'Bebas Neue', sans-serif
+ 
+    
+    &__sliderContainer
+        width: 100%
+        height: vars.$body-height
+        overflow-y:  hidden
+        position: absolute
+        top: vars.$nav-height
+        left: 0
+        object-fit: cover
+        object-position: center

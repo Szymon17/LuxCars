@@ -1,7 +1,8 @@
 import "./Navigation.styles.sass";
-import CustomLink from "../CustomLink/CustomLink.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import CustomLink from "../CustomLink/CustomLink.component";
+import SearchBox from "../SearchBox/SearchBox.component";
 
 const Navigation = () => {
   return (
@@ -10,12 +11,13 @@ const Navigation = () => {
         <CustomLink animationType="bounce" to="/" cssClass="navigation__link">
           <FontAwesomeIcon icon={faHouse} />
         </CustomLink>
+        <SearchBox />
         <div className="navigation__right-container">
           <CustomLink to="/oferts" cssClass="navigation__link">
             Oferty
           </CustomLink>
           <CustomLink animationType="bounce" to="/sumary" cssClass="navigation__link">
-            koszyk
+            <FontAwesomeIcon icon={faCartShopping} />
           </CustomLink>
         </div>
       </div>

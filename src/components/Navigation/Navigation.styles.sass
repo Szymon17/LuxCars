@@ -1,6 +1,16 @@
+@use '../../sass/breakpoints' as bp
+@use '../../sass/colors' as colors
+@use '../../sass/varibles' as vars
+
 .navigation 
-  background-color: rgb(230, 130, 0)
-  height: 50px
+  background-color: colors.$primary
+  height: vars.$nav-height
+  font-size: 20px
+  font-family: 'Bebas Neue', sans-serif
+
+
+  @media (max-width: bp.$tablet-bp)
+    font-size: 13px
       
   &__container 
     width: 90%
@@ -12,6 +22,7 @@
 
   &__right-container
     content: ""
-    width: 20%
+    width: clamp(90px, 20%, 500px)
     display: flex
     justify-content: space-between
+

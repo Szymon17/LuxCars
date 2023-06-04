@@ -28,8 +28,6 @@ const animations = {
 const CustomLink: FC<LinkProps> = ({ cssClass, to, children, animationType }) => {
   const [animationOn, setAnimationState] = useState(false);
 
-  console.log(animationOn);
-
   if (animationType === "bounce")
     return (
       <motion.div whileHover={animations.bounce} className={`${cssClass ? "link " + cssClass : "link"}`}>
