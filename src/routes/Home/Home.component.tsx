@@ -1,30 +1,38 @@
 import "./Home.styles.sass";
-import { useEffect, useState } from "react";
-import Slider from "../../components/Slider/Slider.component";
-import firstImg from "../../assets/HomeSlides/aston.jpg";
-import secondImg from "../../assets/HomeSlides/senna.jpg";
-import thirdImg from "../../assets/HomeSlides/supra.jpg";
-
-const images = [firstImg, secondImg, thirdImg];
-const slideTime = 20000;
+import { useEffect, useRef, useState } from "react";
+import supraImg from "../../assets/HomeSlides/supra.jpg";
+import mobile_supraImg from "../../assets/HomeSlides/supra_mobile.jpg";
 
 const Home = () => {
-  const [index, setIndex] = useState(0);
+  const [img, setImg] = useState(window.innerWidth > 700 ? supraImg : mobile_supraImg);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const changeIndex = () => {
-      if (index + 1 > images.length - 1) setIndex(0);
-      else setIndex(index + 1);
-    };
+    const imgElement = imageRef.current;
+    if (!imgElement) return;
 
-    setTimeout(() => changeIndex(), slideTime);
-  }, [index]);
+    const observer = new ResizeObserver(() => {
+      if (img === supraImg && window.innerWidth < 700) setImg(mobile_supraImg);
+      if (img === mobile_supraImg && window.innerWidth >= 700) setImg(supraImg);
+    });
+
+    observer.observe(imgElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [imageRef, img]);
 
   return (
     <div className="home">
       <h1 className="home__title">Wyporzyczalnia Aut</h1>
-      <div className="home__sliderContainer">
-        <Slider imageUrl={images[index]} />
+      <div className="home__contact"></div>
+      <img ref={imageRef} src={img} alt="" className="home__image"></img>
+      <div className="home__textContainer">
+        <div className="home__textBox">
+          <h1 className="home__text-title">O autach wiemy wszystko</h1>
+          <p className="home__text">Najszersza oferta samochodów w niskich cenach</p>
+        </div>
       </div>
     </div>
   );

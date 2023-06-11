@@ -1,18 +1,24 @@
 @use '../../sass/varibles' as vars
+@use '../../sass/breakpoints' as bp
 
 
 .home
     height: vars.$body-height
     overflow: auto
     
-
     &__title
+        position: relative
         margin-top: 5vh
         text-align: center
         font-family: 'Bebas Neue', sans-serif
+        color: silver
+        z-index: 1
+
+        @media (max-width: bp.$small_laptop-bp) 
+            display: none
  
     
-    &__sliderContainer
+    &__image
         width: 100%
         height: vars.$body-height
         overflow-y:  hidden
@@ -21,3 +27,49 @@
         left: 0
         object-fit: cover
         object-position: center
+
+        @media ( max-width: bp.$laptop-bp)
+            object-position: -230px
+        
+        @media ( max-width: bp.$tablet-bp)
+            object-position: center
+
+    &__textContainer
+        position: absolute
+        top: vars.$nav-height
+        right: 20px
+        height: vars.$body-height
+        width: 30vw
+        display: flex
+        align-items: center
+        color: white
+
+        @media (max-width: bp.$laptop-bp)
+            right: 5px
+
+
+        @media (max-width: bp.$small_laptop-bp)
+            height: auto
+            width: 100%
+            justify-content: center
+            top: calc(vars.$nav-height  + 50px) 
+            right: 100%
+            transform: translateX(100%)
+
+    &__textBox
+        width: 100%
+        text-align: center
+
+    &__text-title
+        font-family: 'Bebas Neue', sans-serif
+        color: rgb(255, 255, 255)
+        text-shadow: 0 0 10px rgb(0, 0, 0)
+
+        @media (max-width: bp.$small_laptop-bp) 
+            text-shadow: 0 0 10px rgb(255, 0, 0)
+
+    &__text
+        font-size: 30px
+        color: silver
+
+       
